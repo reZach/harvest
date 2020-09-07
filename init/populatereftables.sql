@@ -18,7 +18,7 @@ FROM FoodGroup fg
 WHERE fg.Name = N'Plants'
 
 insert into FoodMajorType (FoodGroupId, Name)
-	values (@aquatic, N'Fish'), (@aquatic, N'Shellfish'), (@aquatic, N'Other  acquatic animals');
+	values (@aquatic, N'Fish'), (@aquatic, N'Shellfish'), (@aquatic, N'Other acquatic animals');
 insert into FoodMajorType (FoodGroupId, Name)
 	values (@land, N'Dairy'), (@land, N'Game'), (@land, N'Meat-poultry'), (@land, N'Eggs');
 insert into FoodMajorType (FoodGroupId, Name)
@@ -37,8 +37,57 @@ DECLARE @produce INT;
 DECLARE @grainsbeans INT;
 DECLARE @nutsseeds INT;
 
+SELECT @fish = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Fish'
+SELECT @shellfish = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Shellfish'
+SELECT @otheracquatic = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Other acquatic animals'
 
-insert into FoodSubtype (FoodGroupId, Name)
-	values (2, N'Dairy'), (2, N'Game'), (2, N'Meat-poultry'), (2, N'Eggs');
+SELECT @dairy = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Dairy'
+SELECT @game = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Game'
+SELECT @meatpoultry = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Meat-poultry'
+SELECT @eggs = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Eggs'
+
+SELECT @oilssugars = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Oils-sugars'
+SELECT @produce = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Produce'
+SELECT @grainsbeans = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Grains-beans'
+SELECT @nutsseeds = FoodMajorTypeId
+FROM FoodMajorType fm
+WHERE fm.Name = N'Nuts-seeds'
+
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@fish, N'Siluriformes (catfish)'), (@fish, N'Other fish');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@shellfish, N'Mollusks'), (@shellfish, N'Crustaceans');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@dairy, N'Solid/semi-solid dairy products'), (@dairy, N'Fluid milk');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@meatpoultry, N'Meat'), (@meatpoultry, N'Poultry');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@eggs, N'Shell eggs'), (@eggs, N'Egg products');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@produce, N'Fruits'), (@produce, N'Vegetables');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@grainsbeans, N'Grains'), (@produce, N'Beans');
+insert into FoodSubtype (FoodMajorTypeId, Name)
+	values (@nutsseeds, N'Nuts'), (@produce, N'Seeds');
 
 rollback transaction

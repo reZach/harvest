@@ -23,6 +23,8 @@ CREATE TABLE FoodGroup(
     Name nvarchar(255)
 ) CREATE TABLE FoodSubtypeVariety(
     FoodSubtypeVarietyId int PRIMARY KEY IDENTITY,
+    FoodSubtypeId int,
+    ParentFoodSubtypeVarietyId int,
     Name nvarchar(255)
 ) CREATE TABLE FoodProcessingType(
     FoodProcessingTypeId int PRIMARY KEY IDENTITY,
@@ -117,6 +119,11 @@ ALTER TABLE
     FoodSubtype
 ADD 
     CONSTRAINT FK_FoodSubtype_FoodMajorTypeId FOREIGN KEY (FoodMajorTypeId) REFERENCES FoodMajorType (FoodMajorTypeId) ON DELETE CASCADE ON UPDATE CASCADE
+ALTER TABLE
+    FoodSubtypeVariety
+ADD
+    CONSTRAINT FK_FoodSubtypeVariety_FoodSubtypeId FOREIGN KEY (FoodSubtypeId) REFERENCES FoodSubtype (FoodSubtypeId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_FoodSubtypeVariety_FoodSubtypeVarietyId FOREIGN KEY (ParentFoodSubtypeVarietyId) REFERENCES FoodSubtypeVariety (FoodSubtypeVarietyId) ON DELETE CASCADE ON UPDATE CASCADE
 ALTER TABLE
     FoodProcessingType
 ADD
