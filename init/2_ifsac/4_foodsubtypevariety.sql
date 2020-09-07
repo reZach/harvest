@@ -31,7 +31,7 @@ INSERT INTO FoodSubtypeVariety (FoodSubtypeId, Name)
 	VALUES (@mollusks, N'Bivalve'), (@mollusks, N'Non-bivalve');
 
 INSERT INTO FoodSubtypeVariety (FoodSubtypeId, Name)
-	VALUES (@meat, N'Beef'), (@meat, N'Pork'), (meat, N'Other meat');
+	VALUES (@meat, N'Beef'), (@meat, N'Pork'), (@meat, N'Other meat');
 INSERT INTO FoodSubtypeVariety (FoodSubtypeId, Name)
 	VALUES (@poultry, N'Chicken'), (@poultry, N'Turkey'), (@poultry, N'Other poultry');
 
@@ -45,13 +45,13 @@ DECLARE @rootunderground int;
 DECLARE @seededvegetables int;
 DECLARE @vegetablerowcrops int;
 
-SELECT @rootunderground = FoodSubtypeId
+SELECT @rootunderground = FoodSubtypeVarietyId
 FROM FoodSubtypeVariety fv
 WHERE fv.Name = N'Root/underground'
-SELECT @seededvegetables = FoodSubtypeId
+SELECT @seededvegetables = FoodSubtypeVarietyId
 FROM FoodSubtypeVariety fv
 WHERE fv.Name = N'Seeded vegetables'
-SELECT @vegetablerowcrops = FoodSubtypeId
+SELECT @vegetablerowcrops = FoodSubtypeVarietyId
 FROM FoodSubtypeVariety fv
 WHERE fv.Name = N'Vegetable row crops'
 
