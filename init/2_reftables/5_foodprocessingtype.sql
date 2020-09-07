@@ -21,7 +21,8 @@ declare @fruitstone int;
 declare @fruitpome int;
 declare @fruitmelons int;
 
-declare @vegrootfungi int;
+declare @vegfungi int;
+
 declare @vegrootroots int;
 declare @vegroottubers int;
 declare @vegrootbulbs int;
@@ -97,7 +98,7 @@ SELECT @fruitmelons = FoodSubtypeVarietyId
 FROM FoodSubtypeVariety f
 WHERE f.Name = N'Melons'
 
-SELECT @vegrootfungi = FoodSubtypeVarietyId
+SELECT @vegfungi = FoodSubtypeVarietyId
 FROM FoodSubtypeVariety f
 WHERE f.Name = N'Fungi'
 SELECT @vegrootroots = FoodSubtypeVarietyId
@@ -231,6 +232,143 @@ INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodP
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
 	VALUES (null, @chicken, null, N'Ready to eat'), (null, @chicken, null, N'Raw otherwise processed'), (null, @turkey, null, N'Ready to eat'), (null, @turkey, null, N'Raw otherwise processed');
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-    VALUES (null, @pork, null, N'Intact raw'), (null, @pork, null N'Non-intact raw'), (null, @othermeat, null, N'Intact raw'), (null, @othermeat, null N'Non-intact raw');
+    VALUES (null, @turkey, null, N'Intact raw'), (null, @turkey, null N'Non-intact raw'), (null, @otherpoultry, null, N'Intact raw'), (null, @otherpoultry, null N'Non-intact raw');
+
+-- subtree #5 poultry/chicken/ready to eat
+declare @chickenreadytoeatsubtree int;
+
+select @chickenreadytoeatsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Ready to eat'
+and f.FoodSubtypeVarietyId = @chicken
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @chickenreadytoeatsubtree, N'Acidified/fermented'), (null, null, @chickenreadytoeatsubtree, N'Dried'), (null, null, @chickenreadytoeatsubtree, N'Salt-cured'), (null, null, @chickenreadytoeatsubtree, N'Fully cooked');
+
+declare @chickenreadytoeatfullycookedsubtree int;
+
+select @chickenreadytoeatfullycookedsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Fully cooked'
+and f.ParentFoodProcessingTypeId = @chickenreadytoeatsubtree
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @chickenreadytoeatfullycookedsubtree, N'Hot dog products'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Diced/shredded'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Patties/nuggets'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Sausage products'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (null, null, @chickenreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+
+-- subtree #6 poultry/turkey/ready to eat
+declare @turkeyreadytoeatsubtree int;
+
+select @turkeyreadytoeatsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Ready to eat'
+and f.FoodSubtypeVarietyId = @turkey
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @turkeyreadytoeatsubtree, N'Acidified/fermented'), (null, null, @turkeyreadytoeatsubtree, N'Dried'), (null, null, @turkeyreadytoeatsubtree, N'Salt-cured'), (null, null, @turkeyreadytoeatsubtree, N'Fully cooked');
+
+declare @turkeyreadytoeatfullycookedsubtree int;
+
+select @turkeyreadytoeatfullycookedsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Fully cooked'
+and f.ParentFoodProcessingTypeId = @turkeyreadytoeatsubtree
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @turkeyreadytoeatfullycookedsubtree, N'Hot dog products'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Diced/shredded'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Patties/nuggets'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Sausage products'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (null, null, @turkeyreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@shelleggs, null, null, N'Unpasteurized'), (@shelleggs, null, null, N'Pasteurized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@eggproducts, null, null, N'Egg substitues'), (@eggproducts, null, null, N'Cooked egg products'), (@eggproducts, null, null, N'Ready to eat egg products');
+
+-- subtree #7 eggs/egg products/ready to eat egg products
+declare @eggproductsreadytoeatsubtree int;
+
+select @eggproductsreadytoeatsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Ready to eat egg products'
+and f.FoodSubtypeId = @eggproducts
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @eggproductsreadytoeatsubtree, N'Liquid or frozen'), (null, null, @eggproductsreadytoeatsubtree, N'Dried');
+
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruittropical, null, N'Frozen'), (null, @fruittropical, null, N'Dried'), (null, @fruittropical, null, N'Fresh-cut'), (null, @fruittropical, null, N'Raw'), (null, @fruittropical, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruitsubtropical, null, N'Frozen'), (null, @fruitsubtropical, null, N'Dried'), (null, @fruitsubtropical, null, N'Fresh-cut'), (null, @fruitsubtropical, null, N'Raw'), (null, @fruitsubtropical, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruitsmall, null, N'Frozen'), (null, @fruitsmall, null, N'Dried'), (null, @fruitsmall, null, N'Fresh-cut'), (null, @fruitsmall, null, N'Raw'), (null, @fruitsmall, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruitstone, null, N'Frozen'), (null, @fruitstone, null, N'Dried'), (null, @fruitstone, null, N'Fresh-cut'), (null, @fruitstone, null, N'Raw'), (null, @fruitstone, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruitpome, null, N'Frozen'), (null, @fruitpome, null, N'Dried'), (null, @fruitpome, null, N'Fresh-cut'), (null, @fruitpome, null, N'Raw'), (null, @fruitpome, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @fruitmelons, null, N'Frozen'), (null, @fruitmelons, null, N'Dried'), (null, @fruitmelons, null, N'Fresh-cut'), (null, @fruitmelons, null, N'Raw'), (null, @fruitmelons, null, N'Canned/containerized');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegfungi, null, N'Fresh'), (null, @vegfungi, null, N'Dried'), (null, @vegfungi, null, N'Canned/containerized');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrootroots, null, N'Fresh'), (null, @vegrootroots, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegroottubers, null, N'Fresh'), (null, @vegroottubers, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrootbulbs, null, N'Fresh'), (null, @vegrootbulbs, null, N'Canned/containerized');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrootother, null, N'Fresh'), (null, @vegrootother, null, N'Canned/containerized');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegseededlegumes, null, N'Fresh'), (null, @vegseededlegumes, null, N'Canned/containerized'), (null, @vegseededlegumes, null, N'Frozen'), (null, @vegseededlegumes, null, N'Dried');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegseededvine, null, N'Fresh'), (null, @vegseededvine, null, N'Canned/containerized'), (null, @vegseededvine, null, N'Frozen'), (null, @vegseededvine, null, N'Dried');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegseededsolanaceous, null, N'Fresh'), (null, @vegseededsolanaceous, null, N'Canned/containerized'), (null, @vegseededsolanaceous, null, N'Frozen'), (null, @vegseededsolanaceous, null, N'Dried');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegseededother, null, N'Fresh'), (null, @vegseededother, null, N'Canned/containerized'), (null, @vegseededother, null, N'Frozen'), (null, @vegseededother, null, N'Dried');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegherbs, null, N'Fresh herbs'), (null, @vegherbs, null, N'Dried herbs'), (null, @vegherbs, null, N'Teas');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrowcropsflower, null, N'Fresh'), (null, @vegrowcropsflower, null, N'Canned/containerized'), (null, @vegrowcropsflower, null, N'Frozen'), (null, @vegrowcropsflower, null, N'Dried');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrowcropsleafy, null, N'Fresh'), (null, @vegrowcropsleafy, null, N'Canned/containerized'), (null, @vegrowcropsleafy, null, N'Frozen'), (null, @vegrowcropsleafy, null, N'Dried');
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, @vegrowcropsstem, null, N'Fresh'), (null, @vegrowcropsstem, null, N'Canned/containerized'), (null, @vegrowcropsstem, null, N'Frozen'), (null, @vegrowcropsstem, null, N'Dried');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@grains, null, null, N'Ground'), (@grains, null, null, N'Whole');
+
+-- subtree #8 grains/ground
+declare @grainsgroundsubtree int;
+
+select @grainsgroundsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Ground'
+and f.FoodSubtypeId = @grains
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @grainsgroundsubtree, N'Flour'), (null, null, @grainsgroundsubtree, N'Flour-based product');
+
+declare @grainsgroundflourbasedsubtree int;
+
+select @grainsgroundflourbasedsubtree = FoodProcessingTypeId
+from FoodProcessingType f
+where f.Name = N'Flour-based product'
+and f.ParentFoodProcessingTypeId = @grainsgroundsubtree
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (null, null, @grainsgroundflourbasedsubtree, N'Breads'), (null, null, @grainsgroundflourbasedsubtree, N'Doughs'), (null, null, @grainsgroundflourbasedsubtree, N'Pastas'), (null, null, @grainsgroundflourbasedsubtree, N'Prepared cereals'), (null, null, @grainsgroundflourbasedsubtree, N'Cakes'), (null, null, @grainsgroundflourbasedsubtree, N'Biscuits/cookies/wafers');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@beans, null, null, N'Whole, dried'), (@beans, null, null, N'Canned/containerized'), (@beans, null, null, N'Ground, flour');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@nuts, null, null, N'Processed'), (@nuts, null, null, N'Unprocessed');
+
+INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
+	VALUES (@seeds, null, null, N'Crushed/cracked/ground'), (@seeds, null, null, N'Whole, dried'), (@seeds, null, null, N'Paste');
 
 ROLLBACK TRANSACTION
