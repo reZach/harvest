@@ -23,12 +23,14 @@ CREATE TABLE FoodGroup(
     Name nvarchar(255)
 ) CREATE TABLE FoodSubtypeVariety(
     FoodSubtypeVarietyId int PRIMARY KEY IDENTITY,
-    FoodSubtypeId int,
-    ParentFoodSubtypeVarietyId int,
+    FoodSubtypeId int null,
+    ParentFoodSubtypeVarietyId int null,
     Name nvarchar(255)
 ) CREATE TABLE FoodProcessingType(
     FoodProcessingTypeId int PRIMARY KEY IDENTITY,
-    ParentFoodProcessingTypeId int,
+    FoodSubtypeId int null,
+    FoodSubtypeVarietyId int null,
+    ParentFoodProcessingTypeId int null,
     Name nvarchar(255)
 ) CREATE TABLE Food(
     FoodId int PRIMARY KEY IDENTITY,
@@ -123,11 +125,13 @@ ALTER TABLE
     FoodSubtypeVariety
 ADD
     CONSTRAINT FK_FoodSubtypeVariety_FoodSubtypeId FOREIGN KEY (FoodSubtypeId) REFERENCES FoodSubtype (FoodSubtypeId) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_FoodSubtypeVariety_FoodSubtypeVarietyId FOREIGN KEY (ParentFoodSubtypeVarietyId) REFERENCES FoodSubtypeVariety (FoodSubtypeVarietyId) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_FoodSubtypeVariety_FoodSubtypeVarietyId FOREIGN KEY (ParentFoodSubtypeVarietyId) REFERENCES FoodSubtypeVariety (FoodSubtypeVarietyId) ON DELETE NO ACTION ON UPDATE NO ACTION
 ALTER TABLE
     FoodProcessingType
 ADD
-    CONSTRAINT FK_FoodProcessingType_FoodProcessingTypeId FOREIGN KEY (ParentFoodProcessingTypeId) REFERENCES FoodProcessingType (FoodProcessingTypeId) ON DELETE no action ON UPDATE no action 
+    CONSTRAINT FK_FoodProcessingType_FoodSubtypeId FOREIGN KEY (FoodSubtypeId) REFERENCES FoodSubtype (FoodSubtypeId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_FoodProcessingType_FoodSubtypeVarietyId FOREIGN KEY (FoodSubtypeVarietyId) REFERENCES FoodSubtypeVariety (FoodSubtypeVarietyId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_FoodProcessingType_FoodProcessingTypeId FOREIGN KEY (ParentFoodProcessingTypeId) REFERENCES FoodProcessingType (FoodProcessingTypeId) ON DELETE NO ACTION ON UPDATE NO ACTION 
     
 PRINT N'Constraints created' 
 
