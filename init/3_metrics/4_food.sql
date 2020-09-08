@@ -261,7 +261,7 @@ WHERE f.Name = N'Seeds'
 
 -- foods
 INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, Example) VALUES 
-	(@plant, @produce, @vegetables, @vegrootbulbs, NULL, N'onion')
+	(@plant, @produce, @vegetables, @vegrootbulbs, NULL, N'fresh onion')
 declare @choppedredonion int;
 select @choppedredonion = FoodId
 from Food f
