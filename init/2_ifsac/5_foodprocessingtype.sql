@@ -169,7 +169,7 @@ DECLARE @beefreadytoeatsubtree int;
 
 SELECT @beefreadytoeatsubtree = FoodProcessingTypeId
 FROM FoodProcessingType f
-WHERE f.Name = N'Ready TO eat'
+WHERE f.Name = N'Ready to eat'
 AND f.FoodSubtypeVarietyId = @beef
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
@@ -190,7 +190,7 @@ DECLARE @porkreadytoeatsubtree int;
 
 SELECT @porkreadytoeatsubtree = FoodProcessingTypeId
 FROM FoodProcessingType f
-WHERE f.Name = N'Ready TO eat'
+WHERE f.Name = N'Ready to eat'
 AND f.FoodSubtypeVarietyId = @pork
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
@@ -232,7 +232,7 @@ INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodP
 
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, @chicken, NULL, N'Ready TO eat'), (NULL, @chicken, NULL, N'Raw otherwise processed'), (NULL, @turkey, NULL, N'Ready TO eat'), (NULL, @turkey, NULL, N'Raw otherwise processed');
+	VALUES (NULL, @chicken, NULL, N'Ready to eat'), (NULL, @chicken, NULL, N'Raw otherwise processed'), (NULL, @turkey, NULL, N'Ready to eat'), (NULL, @turkey, NULL, N'Raw otherwise processed');
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
     VALUES (NULL, @turkey, NULL, N'Intact raw'), (NULL, @turkey, NULL, N'Non-intact raw'), (NULL, @otherpoultry, NULL, N'Intact raw'), (NULL, @otherpoultry, NULL, N'Non-intact raw');
 
@@ -241,7 +241,7 @@ DECLARE @chickenreadytoeatsubtree int;
 
 SELECT @chickenreadytoeatsubtree = FoodProcessingTypeId
 FROM FoodProcessingType f
-WHERE f.Name = N'Ready TO eat'
+WHERE f.Name = N'Ready to eat'
 AND f.FoodSubtypeVarietyId = @chicken
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
@@ -262,7 +262,7 @@ DECLARE @turkeyreadytoeatsubtree int;
 
 SELECT @turkeyreadytoeatsubtree = FoodProcessingTypeId
 FROM FoodProcessingType f
-WHERE f.Name = N'Ready TO eat'
+WHERE f.Name = N'Ready to eat'
 AND f.FoodSubtypeVarietyId = @turkey
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
@@ -282,14 +282,14 @@ INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodP
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
 	VALUES (@shelleggs, NULL, NULL, N'Unpasteurized'), (@shelleggs, NULL, NULL, N'Pasteurized');
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (@eggproducts, NULL, NULL, N'Egg substitues'), (@eggproducts, NULL, NULL, N'Cooked egg products'), (@eggproducts, NULL, NULL, N'Ready TO eat egg products');
+	VALUES (@eggproducts, NULL, NULL, N'Egg substitues'), (@eggproducts, NULL, NULL, N'Cooked egg products'), (@eggproducts, NULL, NULL, N'Ready to eat egg products');
 
 -- subtree #7 eggs/egg products/ready to eat egg products
 DECLARE @eggproductsreadytoeatsubtree int;
 
 SELECT @eggproductsreadytoeatsubtree = FoodProcessingTypeId
 FROM FoodProcessingType f
-WHERE f.Name = N'Ready TO eat egg products'
+WHERE f.Name = N'Ready to eat egg products'
 AND f.FoodSubtypeId = @eggproducts
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
