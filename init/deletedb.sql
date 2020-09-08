@@ -51,7 +51,7 @@ SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND categ
 
 WHILE @name IS NOT NULL
 BEGIN
-    SELECT @SQL = 'DROP TABLE [dbo].[' + RTRIM(@name) +']'
+    SELECT @SQL = 'TRUNCATE TABLE [dbo].[' + RTRIM(@name) + ']; DROP TABLE [dbo].[' + RTRIM(@name) +']'
     EXEC (@SQL)
     PRINT 'Dropped Table: ' + @name
     SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 AND [name] > @name ORDER BY [name])
