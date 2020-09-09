@@ -38,7 +38,8 @@ CREATE TABLE FoodGroup(
     FoodMajorTypeId int NULL,
     FoodSubtypeId int NULL,
     FoodSubtypeVarietyId int NULL,
-    FoodProcessingTypeId int NULL
+    FoodProcessingTypeId int NULL,
+    Example nvarchar(255)
 ) CREATE TABLE FoodTranslation (
     FoodTranslationId int PRIMARY KEY IDENTITY,
     LanguageId int,

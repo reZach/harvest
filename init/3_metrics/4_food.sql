@@ -257,7 +257,246 @@ FROM FoodSubtype f
 WHERE f.Name = N'Seeds'
 
 --food processing type
+declare @soliddairyunpasteurized int;
+declare @soliddairypasteurized int;
+declare @fluidmilkunpasteurized int;
+declare @fluidmilkpasteurized int;
 
+declare @beefrawprocessed int;
+declare @beefreadytoeat int;
+declare @beefacidified int;
+declare @beefdried int;
+declare @beefsaltcured int;
+declare @beeffullycooked int;
+declare @beefhotdog int;
+declare @beefsaladspread int;
+declare @beefotherfullycookedsliced int;
+declare @beefotherfullycookednotsliced int;
+declare @beefdiced int;
+declare @beefpatties int;
+declare @beefsausage int;
+declare @beefmeatplusnonmeat int;
+declare @beefthermalprocess int;
+
+declare @porkrawprocessed int;
+declare @porkreadytoeat int;
+declare @porkacidified int;
+declare @porkdried int;
+declare @porksaltcured int;
+declare @porkfullycooked int;
+declare @porkhotdog int;
+declare @porksaladspread int;
+declare @porkotherfullycookedsliced int;
+declare @porkotherfullycookednotsliced int;
+declare @porkdiced int;
+declare @porkpatties int;
+declare @porksausage int;
+declare @porkmeatplusnonmeat int;
+declare @porkthermalprocess int;
+
+declare @porkintactraw int;
+declare @porktenderized int;
+declare @porkground int;
+declare @othermeatintactraw int;
+declare @othermeattenderized int;
+declare @othermeatground int;
+
+declare @chickenrawprocessed int;
+declare @chickenacidified int;
+declare @chickendried int;
+declare @chickensaltcured int;
+declare @chickenhotdog int;
+declare @chickensaladspread int;
+declare @chickenotherfullycookedsliced int;
+declare @chickenotherfullycookednotsliced int;
+declare @chickendiced int;
+declare @chickenpatties int;
+declare @chickensausage int;
+declare @chickenmeatplusnonmeat int;
+declare @chickenthermalprocess int;
+
+declare @turkeyrawprocessed int;
+declare @turkeyacidified int;
+declare @turkeydried int;
+declare @turkeysaltcured int;
+declare @turkeyhotdog int;
+declare @turkeysaladspread int;
+declare @turkeyotherfullycookedsliced int;
+declare @turkeyotherfullycookednotsliced int;
+declare @turkeydiced int;
+declare @turkeypatties int;
+declare @turkeysausage int;
+declare @turkeymeatplusnonmeat int;
+declare @turkeythermalprocess int;
+
+declare @turkeyintactraw int;
+declare @turkeynonintactraw int;
+declare @otherpoultryintactraw int;
+declare @otherpoultrynonintactraw int;
+
+declare @shelleggspasteurized int;
+declare @shelleggsunpasteurized int;
+declare @eggproductssubstitues int;
+declare @eggproductscooked int;
+declare @eggproductsreadytoeatliquidfrozen int;
+declare @eggproductsreadytoeatdried int;
+
+declare @fruittropicalfrozen int;
+declare @fruittropicaldried int;
+declare @fruittropicalfreshcut int;
+declare @fruittropicalraw int;
+declare @fruittropicalcanned int;
+declare @fruitsubtropicalfrozen int;
+declare @fruitsubtropicaldried int;
+declare @fruitsubtropicalfreshcut int;
+declare @fruitsubtropicalraw int;
+declare @fruitsubtropicalcanned int;
+declare @fruitsmallfrozen int;
+declare @fruitsmalldried int;
+declare @fruitsmallfreshcut int;
+declare @fruitsmallraw int;
+declare @fruitsmallcanned int;
+declare @fruitstonefrozen int;
+declare @fruitstonedried int;
+declare @fruitstonefreshcut int;
+declare @fruitstoneraw int;
+declare @fruitstonecanned int;
+declare @fruitpomefrozen int;
+declare @fruitpomedried int;
+declare @fruitpomefreshcut int;
+declare @fruitpomeraw int;
+declare @fruitpomecanned int;
+declare @fruitmelonfrozen int;
+declare @fruitmelondried int;
+declare @fruitmelonfreshcut int;
+declare @fruitmelonraw int;
+declare @fruitmeloncanned int;
+
+declare @fungifresh int;
+declare @fungidried int;
+declare @fungicanned int;
+
+declare @rootsfresh int;
+declare @rootscanned int;
+declare @tubersfresh int;
+declare @tuberscanned int;
+declare @bulbsfresh int;
+declare @bulbscanned int;
+declare @otherundergroundfresh int;
+declare @otherundergroundcanned int;
+
+declare @legumesfresh int;
+declare @legumescanned int;
+declare @legumesfrozen int;
+declare @legumesdried int;
+declare @vinegrownfresh int;
+declare @vinegrowncanned int;
+declare @vinegrownfrozen int;
+declare @vinegrowndried int;
+declare @solanaceousfresh int;
+declare @solanaceouscanned int;
+declare @solanaceousfrozen int;
+declare @solanaceousdried int;
+declare @otherseededfresh int;
+declare @otherseededcanned int;
+declare @otherseededfrozen int;
+declare @otherseededdried int;
+
+declare @herbsfresh int;
+declare @herbsdried int;
+declare @herbsteas int;
+
+declare @vegrowflowerfresh int;
+declare @vegrowflowercanned int;
+declare @vegrowflowerfrozen int;
+declare @vegrowflowerdried int;
+declare @vegrowleafyfresh int;
+declare @vegrowleafycanned int;
+declare @vegrowleafyfrozen int;
+declare @vegrowleafydried int;
+declare @vegrowstemfresh int;
+declare @vegrowstemcanned int;
+declare @vegrowstemfrozen int;
+declare @vegrowstemdried int;
+
+declare @grainsflour int;
+declare @grainswhole int;
+declare @grainsbread int;
+declare @grainsdough int;
+declare @grainspasta int;
+declare @grainscereals int;
+declare @grainscakes int;
+declare @grainsbiscuitscookies int;
+
+declare @beanswhole int;
+declare @beanscanned int;
+declare @beansground int;
+
+declare @nutsprocessed int;
+declare @nutsunprocessed int;
+
+declare @seedscrushed int;
+declare @seedswhole int;
+declare @seedspaste int;
+
+SELECT @soliddairyunpasteurized = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeId = @soliddairyproducts and f.Name = N'Unpasteurized'
+SELECT @soliddairypasteurized = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeId = @soliddairyproducts and f.Name = N'Pasteurized'
+SELECT @fluidmilkunpasteurized = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeId = @fluidmilk and f.Name = N'Unpasteurized'
+SELECT @fluidmilkpasteurized = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeId = @fluidmilk and f.Name = N'Pasteurized'
+
+SELECT @beefrawprocessed = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeVarietyId = @beef and f.Name = N'Raw otherwise processed'
+SELECT @beefreadytoeat = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodSubtypeVarietyId = @beef and f.Name = N'Ready to eat'
+SELECT @beefacidified = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beefreadytoeat and f.Name = N'Acidified/fermented'
+SELECT @beefdried = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beefreadytoeat and f.Name = N'Dried'
+SELECT @beefsaltcured = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beefreadytoeat and f.Name = N'Salt-cured'
+SELECT @beeffullycooked = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beefreadytoeat and f.Name = N'Fully cooked'
+SELECT @beefhotdog = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Hot dog products'
+SELECT @beefsaladspread = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Salad/spread/pate'
+SELECT @beefotherfullycookedsliced = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Other fully-cooked sliced'
+SELECT @beefotherfullycookednotsliced = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Other fully-cooked not sliced'
+SELECT @beefdiced = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Diced/shredded'
+SELECT @beefpatties = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Patties/nuggets'
+SELECT @beefsausage = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Sausage products'
+SELECT @beefmeatplusnonmeat = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Meat + nonmeat multicomponent'
+SELECT @beefthermalprocess = FoodProcessingTypeId
+FROM FoodProcessingType f
+WHERE f.FoodProcessingTypeId = @beeffullycooked and f.Name = N'Thermal process/commercial sterile'
 
 -- foods
 INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, Example) VALUES 

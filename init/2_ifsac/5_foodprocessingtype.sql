@@ -183,7 +183,7 @@ WHERE f.Name = N'Fully cooked'
 AND f.ParentFoodProcessingTypeId = @beefreadytoeatsubtree
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Other fully-cooked NOT sliced'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+	VALUES (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @beefreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
 
 -- subtree #2 meat/pork/ready to eat
 DECLARE @porkreadytoeatsubtree int;
@@ -204,7 +204,7 @@ WHERE f.Name = N'Fully cooked'
 AND f.ParentFoodProcessingTypeId = @porkreadytoeatsubtree
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Other fully-cooked NOT sliced'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+	VALUES (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @porkreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
 
 -- subtree #3 meat/pork/non-intact raw
 DECLARE @porknonintactrawsubtree int;
@@ -255,7 +255,7 @@ WHERE f.Name = N'Fully cooked'
 AND f.ParentFoodProcessingTypeId = @chickenreadytoeatsubtree
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked NOT sliced'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+	VALUES (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @chickenreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
 
 -- subtree #6 poultry/turkey/ready to eat
 DECLARE @turkeyreadytoeatsubtree int;
@@ -276,7 +276,7 @@ WHERE f.Name = N'Fully cooked'
 AND f.ParentFoodProcessingTypeId = @turkeyreadytoeatsubtree
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked NOT sliced'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
+	VALUES (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Hot dog products'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Salad/spread/pate'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked sliced'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Other fully-cooked not sliced'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Diced/shredded'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Patties/nuggets'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Sausage products'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Meat + nonmeat multicomponent'), (NULL, NULL, @turkeyreadytoeatfullycookedsubtree, N'Thermal process/commercial sterile');
 
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
