@@ -293,7 +293,7 @@ WHERE f.Name = N'Ready to eat egg products'
 AND f.FoodSubtypeId = @eggproducts
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
-	VALUES (NULL, NULL, @eggproductsreadytoeatsubtree, N'Liquid OR frozen'), (NULL, NULL, @eggproductsreadytoeatsubtree, N'Dried');
+	VALUES (NULL, NULL, @eggproductsreadytoeatsubtree, N'Liquid or frozen'), (NULL, NULL, @eggproductsreadytoeatsubtree, N'Dried');
 
 
 INSERT INTO FoodProcessingType (FoodSubtypeId, FoodSubtypeVarietyId, ParentFoodProcessingTypeId, Name)
