@@ -16,4 +16,10 @@ INSERT INTO Unit (LanguageId, Singular, Plural, AbbreviationSingle, Abbreviation
 	(@english, N'tablespoon', N'tablespoons', N'tbsp.', N'tbsps.', 0), 
 	(@english, N'teaspoon', N'teaspoons', N'tsp.', N'tsps.', 0)
 
+INSERT INTO Size(Name)
+	VALUES
+	(N'small'),
+	(N'medium'),
+	(N'large')
+
 ROLLBACK TRANSACTION

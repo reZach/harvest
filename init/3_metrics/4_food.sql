@@ -7,6 +7,21 @@ SELECT @english = LanguageId
 FROM Language l
 WHERE l.Code = N'eng'
 
+--size
+DECLARE @small int;
+DECLARE @medium int;
+DECLARE @large int;
+
+SELECT @small = SizeId
+FROM Size s
+WHERE s.Name = N'small'
+SELECT @medium = SizeId
+FROM Size s
+WHERE s.Name = N'medium'
+SELECT @large = SizeId
+FROM Size s
+WHERE s.Name = N'large'
+
 --food group
 DECLARE @aquatic int;
 DECLARE @land INT;
@@ -989,17 +1004,187 @@ FROM FoodProcessingType f
 WHERE f.FoodSubtypeId = @seeds AND f.Name = N'Paste'
 
 -- foods
-INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, Example) VALUES 
-	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, N'fresh onion')
-DECLARE @onion int;
-SELECT @onion = FoodId
+
+-- yellow onion
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @small, N'yellow', N'fresh onion')
+DECLARE @smallyellowonion int;
+SELECT @smallyellowonion = FoodId
 FROM Food f
-WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh
-INSERT INTO FoodTranslation (LanguageId, FoodId, Name) VALUES 
-(@english, @onion, N'yellow onion'),
-(@english, @onion, N'sweet onion'),
-(@english, @onion, N'red onion'),
-(@english, @onion, N'white onion'),
-(@english, @onion, N'shallot'),
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @small and f.Variant = N'yellow' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @smallyellowonion, N'small yellow onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @medium, N'yellow', N'fresh onion')
+DECLARE @mediumyellowonion int;
+SELECT @mediumyellowonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @medium and f.Variant = N'yellow' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @mediumyellowonion, N'medium yellow onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @large, N'yellow', N'fresh onion')
+DECLARE @largeyellowonion int;
+SELECT @largeyellowonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @large and f.Variant = N'yellow' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largeyellowonion, N'large yellow onion')
+
+-- sweet onion
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @small, N'sweet', N'fresh onion')
+DECLARE @smallsweetonion int;
+SELECT @smallsweetonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @small and f.Variant = N'sweet' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @smallsweetonion, N'small sweet onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @medium, N'sweet', N'fresh onion')
+DECLARE @mediumsweetonion int;
+SELECT @mediumsweetonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @medium and f.Variant = N'sweet' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @mediumsweetonion, N'medium sweet onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @large, N'sweet', N'fresh onion')
+DECLARE @largesweetonion int;
+SELECT @largesweetonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @large and f.Variant = N'sweet' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largesweetonion, N'large sweet onion')
+
+-- red onion
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @small, N'red', N'fresh onion')
+DECLARE @smallredonion int;
+SELECT @smallredonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @small and f.Variant = N'red' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @smallredonion, N'small red onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @medium, N'red', N'fresh onion')
+DECLARE @mediumredonion int;
+SELECT @mediumredonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @medium and f.Variant = N'red' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @mediumredonion, N'medium red onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @large, N'red', N'fresh onion')
+DECLARE @largeredonion int;
+SELECT @largeredonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @large and f.Variant = N'red' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largeredonion, N'large red onion')
+
+-- white onion
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @small, N'white', N'fresh onion')
+DECLARE @smallwhiteonion int;
+SELECT @smallwhiteonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @small and f.Variant = N'white' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @smallwhiteonion, N'small white onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @medium, N'white', N'fresh onion')
+DECLARE @mediumwhiteonion int;
+SELECT @mediumwhiteonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @medium and f.Variant = N'white' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @mediumwhiteonion, N'medium white onion')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @large, N'white', N'fresh onion')
+DECLARE @largewhiteonion int;
+SELECT @largewhiteonion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @large and f.Variant = N'white' and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largewhiteonion, N'large white onion')
+
+-- shallot
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @small, null, N'fresh shallot')
+DECLARE @smallshallot int;
+SELECT @smallshallot = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @small and f.Example = N'fresh onion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @smallshallot, N'small shallot')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @medium, null, N'fresh shallot')
+DECLARE @mediumshallot int;
+SELECT @mediumshallot = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @medium and f.Example = N'fresh shallot'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @mediumshallot, N'medium shallot')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, @large, null, N'fresh shallot')
+DECLARE @largeshallot int;
+SELECT @largeshallot = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.SizeId = @large and f.Example = N'fresh shallot'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largeshallot, N'large shallot')
+
+--scallion
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @vegetables, @vegrootbulbs, @bulbsfresh, null, null, N'fresh scallion')
+DECLARE @scallion int;
+SELECT @scallion = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @vegetables AND f.FoodSubtypeVarietyId = @vegrootbulbs and f.FoodProcessingTypeId = @bulbsfresh and f.Example = N'fresh scallion'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @largeshallot, N'scallion')
 
 ROLLBACK TRANSACTION

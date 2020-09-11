@@ -39,12 +39,17 @@ CREATE TABLE FoodGroup(
     FoodSubtypeId int NULL,
     FoodSubtypeVarietyId int NULL,
     FoodProcessingTypeId int NULL,
-    Example nvarchar(255)
+    SizeId int null,
+    Variant nvarchar(255) null,
+    Example nvarchar(255) null
 ) CREATE TABLE FoodTranslation (
     FoodTranslationId int PRIMARY KEY IDENTITY,
     LanguageId int,
     FoodId int,
     Name nvarchar(255)
+) CREATE TABLE Size (
+    SizeId int primary key identity,
+    Name nvarchar(75)
 ) CREATE TABLE Time(
     TimeId int PRIMARY KEY IDENTITY,
     Days int,
@@ -62,7 +67,8 @@ CREATE TABLE FoodGroup(
 ) CREATE TABLE Measurement (
     MeasurementId int PRIMARY KEY IDENTITY,
     UnitId int,
-    Amount decimal(10, 2) NULL
+    Amount decimal(10, 2) NULL,
+    AmountMax decimal(10, 2) NULL
 ) CREATE TABLE Ingredient(
     IngredientId int PRIMARY KEY IDENTITY,
     FoodId int,
@@ -144,7 +150,8 @@ ADD
     CONSTRAINT FK_Food_FoodMajorTypeId FOREIGN KEY (FoodMajorTypeId) REFERENCES FoodMajorType (FoodMajorTypeId) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FK_Food_FoodSubtypeId FOREIGN KEY (FoodSubtypeId) REFERENCES FoodSubtype (FoodSubtypeId) On deletE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FK_Food_FoodSubtypeVarietyId FOREIGN KEY (FoodSubtypeVarietyId) REFERENCES FoodSubtypeVariety (FoodSubtypeVarietyId) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_Food_FoodProcessingTypeId FOREIGN KEY (FoodProcessingTypeId) REFERENCES FoodProcessingType (FoodProcessingTypeId) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_Food_FoodProcessingTypeId FOREIGN KEY (FoodProcessingTypeId) REFERENCES FoodProcessingType (FoodProcessingTypeId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Food_SizeId FOREIGN KEY (SizeId) REFERENCES Size (SizeId) ON DELETE CASCADE ON UPDATE CASCADE
 ALTER TABLE
     FoodTranslation
 ADD
