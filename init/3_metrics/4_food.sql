@@ -11,6 +11,9 @@ WHERE l.Code = N'eng'
 DECLARE @small int;
 DECLARE @medium int;
 DECLARE @large int;
+DECLARE @thin int;
+DECLARE @average int;
+DECLARE @thick int;
 
 SELECT @small = SizeId
 FROM Size s
@@ -21,6 +24,15 @@ WHERE s.Name = N'medium'
 SELECT @large = SizeId
 FROM Size s
 WHERE s.Name = N'large'
+SELECT @thin = SizeId
+FROM Size s
+WHERE s.Name = N'thin'
+SELECT @average = SizeId
+FROM Size s
+WHERE s.Name = N'average'
+SELECT @thick = SizeId
+FROM Size s
+WHERE s.Name = N'thick'
 
 --food group
 DECLARE @aquatic int;
@@ -1186,5 +1198,302 @@ WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeI
 INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
 VALUES 
 (@english, @largeshallot, N'scallion')
+
+--banana bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'banana', N'sliced fresh bread')
+DECLARE @slicedfreshbananabread int;
+SELECT @slicedfreshbananabread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'banana' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedfreshbananabread, N'slice banana bread')
+
+-- baguette
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'baguette', N'sliced fresh bread')
+DECLARE @slicedbaguette int;
+SELECT @slicedbaguette = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'baguette' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedbaguette, N'slice of baguette')
+
+--brioche
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'brioche', N'sliced fresh bread')
+DECLARE @slicedbrioche int;
+SELECT @slicedbrioche = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'brioche' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedbrioche, N'slice of brioche')
+
+--challah
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'challah', N'sliced fresh bread')
+DECLARE @slicedchallah int;
+SELECT @slicedchallah = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'challah' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedchallah, N'slice challah')
+
+--ciabatta
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'ciabatta', N'sliced fresh bread')
+DECLARE @slicedciabatta int;
+SELECT @slicedciabatta = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'ciabatta' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedciabatta, N'slice ciabatta')
+
+--cornbread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'cornbread', N'sliced fresh bread')
+DECLARE @slicedcornbread int;
+SELECT @slicedcornbread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'cornbread' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedcornbread, N'slice cornbread')
+
+--focaccia
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'focaccia', N'sliced fresh bread')
+DECLARE @slicedfocaccia int;
+SELECT @slicedfocaccia = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'focaccia' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedfocaccia, N'slice focaccia')
+
+--multigrain bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'multigrain', N'sliced fresh bread')
+DECLARE @slicedmultigrainbread int;
+SELECT @slicedmultigrainbread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'multigrain' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedmultigrainbread, N'slice multigrain bread')
+
+--pita bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'pita', N'fresh bread')
+DECLARE @pitabread int;
+SELECT @pitabread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'pita' and f.Example = N'fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @pitabread, N'pita bread')
+
+--pumpernickel bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'pumpernickel', N'sliced fresh bread')
+DECLARE @slicedpumpernickelbread int;
+SELECT @slicedpumpernickelbread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'pumpernickel' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedpumpernickelbread, N'slice pumpernickel bread')
+
+--rye bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'rye', N'sliced fresh bread')
+DECLARE @slicedryebread int;
+SELECT @slicedryebread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'rye' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedryebread, N'slice rye bread')
+
+--soda bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'soda', N'sliced fresh bread')
+DECLARE @slicedsodabread int;
+SELECT @slicedsodabread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'soda' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedsodabread, N'slice soda bread')
+
+--sourdough
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'sourdough', N'sliced fresh bread')
+DECLARE @slicedsourdoughbread int;
+SELECT @slicedsourdoughbread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'sourdough' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedsourdoughbread, N'slice sourdough bread')
+
+--whole grain bread
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @grainsbeans, @grains, null, @grainsbread, null, N'whole grain', N'sliced fresh bread')
+DECLARE @slicedwholegrainbread int;
+SELECT @slicedwholegrainbread = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @grainsbeans AND f.FoodSubtypeId = @grains AND f.FoodProcessingTypeId = @grainsbread and f.Variant = N'whole grain' and f.Example = N'sliced fresh bread'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedwholegrainbread, N'slice whole grain bread')
+
+--sharp cheddar
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, @average, N'sharp cheddar', N'sliced cheese')
+DECLARE @slicedsharpcheddar int;
+SELECT @slicedsharpcheddar = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.SizeId = @average and f.Variant = N'sharp cheddar' and f.Example = N'sliced cheese'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedsharpcheddar, N'slice sharp cheddar')
+
+--marble cheddar
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, @average, N'marble cheddar', N'sliced cheese')
+DECLARE @slicedmarblecheddar int;
+SELECT @slicedmarblecheddar = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.SizeId = @average and f.Variant = N'marble cheddar' and f.Example = N'sliced cheese'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedmarblecheddar, N'slice marble cheddar')
+
+--colby
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, @average, N'colby', N'sliced cheese')
+DECLARE @slicedcolby int;
+SELECT @slicedcolby = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.SizeId = @average and f.Variant = N'colby' and f.Example = N'sliced cheese'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @slicedcolby, N'slice colby cheese')
+
+--apple
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@plant, @produce, @fruits, @fruitpome, @fruitpomefreshcut, @thin, null, N'sliced apple')
+DECLARE @thinslicedapple int;
+SELECT @thinslicedapple = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @plant AND f.FoodMajorTypeId = @produce AND f.FoodSubtypeId = @fruits AND f.FoodSubtypeVarietyId = @fruitpome AND f.FoodProcessingTypeId = @fruitpomefreshcut and f.SizeId = @thin and f.Example = N'sliced apple'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @thinslicedapple, N'thinly sliced apple, cored')
+
+--butter
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'salted', N'butter')
+DECLARE @saltedbutter int;
+SELECT @saltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @saltedbutter, N'salted butter')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'unsalted', N'butter')
+DECLARE @unsaltedbutter int;
+SELECT @unsaltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @unsaltedbutter, N'unsalted butter')
+
+--grass-fed butter
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'grass-fed salted', N'butter')
+DECLARE @grassfedsaltedbutter int;
+SELECT @grassfedsaltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Variant = N'grass-fed salted' and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @grassfedsaltedbutter, N'grass-fed salted butter')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'grass-fed unsalted', N'butter')
+DECLARE @grassfedunsaltedbutter int;
+SELECT @grassfedunsaltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Variant = N'grass-fed unsalted' and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @grassfedunsaltedbutter, N'grass-fed unsalted butter')
+
+--cultured butter
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'cultured salted', N'butter')
+DECLARE @culturedsaltedbutter int;
+SELECT @culturedsaltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Variant = N'cultured salted' and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @culturedsaltedbutter, N'cultured salted butter')
+
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'cultured unsalted', N'butter')
+DECLARE @culturedunsaltedbutter int;
+SELECT @culturedunsaltedbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Variant = N'cultured unsalted' and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @culturedunsaltedbutter, N'cultured unsalted butter')
+
+--clarified butter
+INSERT INTO Food (FoodGroupId, FoodMajorTypeId, FoodSubtypeId, FoodSubtypeVarietyId, FoodProcessingTypeId, SizeId, Variant, Example) 
+	VALUES 
+	(@land, @dairy, @soliddairyproducts, null, @soliddairypasteurized, null, N'clarified', N'butter')
+DECLARE @clarifieddbutter int;
+SELECT @clarifieddbutter = FoodId
+FROM Food f
+WHERE f.FoodGroupId = @land AND f.FoodMajorTypeId = @dairy AND f.FoodSubtypeId = @soliddairyproducts AND f.FoodProcessingTypeId = @soliddairypasteurized and f.Variant = N'clarified' and f.Example = N'butter'
+INSERT INTO FoodTranslation (LanguageId, FoodId, Name) 
+VALUES 
+(@english, @clarifieddbutter, N'clarified butter')
 
 ROLLBACK TRANSACTION

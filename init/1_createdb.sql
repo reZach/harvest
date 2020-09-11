@@ -72,7 +72,8 @@ CREATE TABLE FoodGroup(
 ) CREATE TABLE Ingredient(
     IngredientId int PRIMARY KEY IDENTITY,
     FoodId int,
-    MeasurementId int
+    MeasurementId int,
+    Optional bit
 ) CREATE TABLE Recipe(
     RecipeId int PRIMARY KEY IDENTITY,
     LanguageId int,
